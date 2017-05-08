@@ -43,7 +43,7 @@ public class GameWindow extends JFrame implements KeyListener
 		currentLvl = lvls[lvl];
 		camX = currentLvl.startingX;
 		camY = currentLvl.startingY;
-		currentLvl.song.start();
+		//currentLvl.song.start();
 		p1.setPos(currentLvl.spawnX, currentLvl.spawnY);
 		//other crap
 	}
@@ -54,12 +54,13 @@ public class GameWindow extends JFrame implements KeyListener
 	public void advance()
 	{
 		PhysicsEngine.updatePlayerVx(p1, (p1.goingLeft || p1.goingRight), p1.goingRight);
+		PhysicsEngine.freeFall(p1);
 		PhysicsEngine.updatePos(p1);
 		for(Block b : currentLvl.layout)
 		{
 			if(b instanceof Entity && b.isOnscreen())
 			{
-				PhysicsEngine.updateEntity((Enemy) b);
+				PhysicsEngine.updateEntity((Entity) b);
 			}
 			PhysicsEngine.updatePos(b);
 		}

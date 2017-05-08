@@ -17,7 +17,7 @@ public class Range
 	
 	public static boolean doRangesCross(Range r1, Range r2)
 	{
-		return Math.max(r1.lower,r2.lower) < Math.min(r1.upper,r2.upper);
+		return Math.max(r1.lower,r2.lower) <= Math.min(r1.upper,r2.upper);
 	}
 
 	public boolean contains(double value) 

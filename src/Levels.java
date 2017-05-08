@@ -33,7 +33,7 @@ public class Levels
 		l1.spawnY = 400;
 		int[][] ranges1 = {{0,6000},{0, 3000}};
 		l1.ranges = ranges1;
-		l1.song = ShadowsUtilities.importSoundClip("./music/stage1.wav");
+		//l1.song = ShadowsUtilities.importSoundClip("./music/stage1.wav");
 		
 		levels[1] = l1;
 		

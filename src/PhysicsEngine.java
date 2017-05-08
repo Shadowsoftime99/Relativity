@@ -15,10 +15,10 @@ public class PhysicsEngine
 		
 	}
 	
-	public static void updatePlayerVy(Player p)
+	public static void freeFall(Player p)
 	{
-		/*if (p.isGrounded) p.Vy = 0;
-		else*/ if(!p.jumping) p.Vy -= p.g * 0.5;
+		if (p.isGrounded) p.Vy = 0;
+		else if(!p.jumping) p.Vy -= p.g * 0.3;
 	}
 	
 	public static void updatePlayerVx(Player p, boolean isAccel, boolean isRightward)
@@ -40,25 +40,25 @@ public class PhysicsEngine
 		
 	}
 	
-	private static double timeInTicks = 0;
+	public static double jumpTimeInTicks = 0;
 	
 	public static void playerJump(Player p)
 	{
 		//if(p.y <= 400 && timeInTicks > 1) p.isGrounded = true;
 		if(p.isGrounded && p.jumping)
 		{
-			timeInTicks = 0;
+			jumpTimeInTicks = 0;
 			p.jumping = false;
 			p.Vy = 0;
 			//p.y = 400;
 			return;
 		}
 		
-		double t = timeInTicks*p.g;
+		double t = jumpTimeInTicks*p.g;
 		
 		double velo = -.10*t+2.8+p.g*2.5;
 		
-		timeInTicks++;
+		jumpTimeInTicks++;
 			
 		p.Vy = velo;
 	}
@@ -87,46 +87,12 @@ public class PhysicsEngine
 	 */
 	public static void enforceAllCollision(Player p, Block[] layout)
 	{
-		double newXCtr = p.x + p.Vx;
-		Range pXRange = new Range(newXCtr-p.w/2.0, newXCtr+p.w/2.0);
-		double newYCtr = p.y + p.Vy;
-		Range pYRange = new Range(newYCtr-p.h/2.0, newYCtr+p.h/2.0);
-		p.isGrounded = false;
+		p.isGrounded = false; 
 		for(Block b : layout)
 		{
 			if(b.checkCollision(p))
 			{
-				
-				Range[] ECB = b.getECB();
-			
-				if(Range.doRangesCross(ECB[1], pYRange) && Math.abs(b.x - newXCtr) < Math.abs(b.x - p.x))
-				{
-					p.Vx = 0;
-					if(b instanceof Ground)
-					{
-						if(p.x > b.x)
-						p.x = b.x + b.w/2.0+p.w/2.0;
-						else if(p.x < b.x)
-						p.x = b.x - b.w/2.0-p.w/2.0;
-					}
 					b.impact(p);
-				}
-				if(Range.doRangesCross(ECB[0], pXRange) && Math.abs(b.y - newYCtr) < Math.abs(b.y - p.y))
-				{
-					p.Vy = 0;
-					if(b instanceof Ground){
-					if(p.y > b.y)
-					p.y = b.y + b.h/2.0+p.h/2.0;
-					else if(p.y < b.y)
-					p.y = b.y - b.h/2.0-p.h/2.0;
-					p.isGrounded = true;
-					p.jumping = false;
-					timeInTicks = 0;
-					}
-					
-					b.impact(p);
-				}
-				
 			}
 		}
 	}
