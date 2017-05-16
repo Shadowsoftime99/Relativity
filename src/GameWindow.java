@@ -53,9 +53,29 @@ public class GameWindow extends JFrame implements KeyListener
 	 */
 	public void advance()
 	{
+		updatePlayer();
+		updateEntities();
+		processAbility();
+		updateCamera();
+		this.repaint();
+		ShadowsUtilities.delay(16);
+	}
+	
+	private void updatePlayer()
+	{
 		PhysicsEngine.updatePlayerVx(p1, (p1.goingLeft || p1.goingRight), p1.goingRight);
 		PhysicsEngine.freeFall(p1);
 		PhysicsEngine.updatePos(p1);
+		if(p1.jumping)
+		{
+			//System.out.println("Trying to jump");
+			PhysicsEngine.playerJump(p1);
+		}
+		
+	}
+	
+	private void updateEntities()
+	{
 		for(Block b : currentLvl.layout)
 		{
 			if(b instanceof Entity && b.isOnscreen())
@@ -64,11 +84,11 @@ public class GameWindow extends JFrame implements KeyListener
 			}
 			PhysicsEngine.updatePos(b);
 		}
-		if(p1.jumping)
-		{
-			//System.out.println("Trying to jump");
-			PhysicsEngine.playerJump(p1);
-		}
+	}
+	
+	public void processAbility()
+	{
+		
 		if(Relativity.gameSpeed == 0.25)
 		{
 			p1.SDBar.cast();
@@ -88,15 +108,14 @@ public class GameWindow extends JFrame implements KeyListener
 				p1.SDBar.blockout = false;
 			}
 		}
-		
-		//PhysicsEngine.updatePlayerVy(p1);
-		//if(p1.y < 400) p1.y = 400;
+	}
+	
+	public void updateCamera()
+	{
 		if(p1.x - camX > 800) camX+= 7;
 		if(p1.x - camX < 200) camX-= 7;
 		if(camX < currentLvl.ranges[0][0]) camX = currentLvl.ranges[0][0];
 		if(camX + GAME_WIDTH > currentLvl.ranges[0][1]) camX = currentLvl.ranges[0][1] - GAME_WIDTH;
-		this.repaint();
-		ShadowsUtilities.delay(16);
 	}
 	
 	@Override
