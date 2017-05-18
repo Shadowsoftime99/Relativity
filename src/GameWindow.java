@@ -2,6 +2,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 
 import javax.swing.JFrame;
 
@@ -31,7 +32,6 @@ public class GameWindow extends JFrame implements KeyListener
 		p1.draw(g);
 		for(Block b : currentLvl.layout)
 		b.draw(g);
-		p1.SDBar.paint(g, 700, 50);
 	}
 	
 	/**
@@ -124,30 +124,35 @@ public class GameWindow extends JFrame implements KeyListener
 		
 	}
 
+	public ArrayList<Integer> pressed = new ArrayList<Integer>();
 	@Override
 	public void keyPressed(KeyEvent e) {
-		if(e.getKeyCode() == KeyEvent.VK_D)
+		if(!pressed.contains(e.getKeyCode()))
 		{
-			p1.goingRight = true;
-			p1.goingLeft = false;
+			if(e.getKeyCode() == KeyEvent.VK_D)
+			{
+				p1.goingRight = true;
+				p1.goingLeft = false;
+			}
+			else if(e.getKeyCode() == KeyEvent.VK_A)
+			{
+				p1.goingLeft = true;
+				p1.goingRight = false;
+			}
+			if(e.getKeyCode() == KeyEvent.VK_SPACE)
+			{
+				p1.jumping = true;
+				p1.isGrounded = false;
+			}
+			if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE && !p1.SDBar.isOOM)
+			{
+				if(!p1.SDBar.blockout)
+					Relativity.gameSpeed = 0.25;
+				else 
+					Relativity.gameSpeed = 1.0;
+			}
+			pressed.add(e.getKeyCode());
 		}
-		else if(e.getKeyCode() == KeyEvent.VK_A)
-		{
-			p1.goingLeft = true;
-			p1.goingRight = false;
-		}
-		else if(e.getKeyCode() == KeyEvent.VK_SPACE)
-		{
-			p1.jumping = true;
-			p1.isGrounded = false;
-		}
-		else if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE && !p1.SDBar.isOOM)
-		{
-			if(!p1.SDBar.blockout)
-				Relativity.gameSpeed = 0.25;
-			else 
-				Relativity.gameSpeed = 1.0;
-		}		
 	}
 
 	@Override
@@ -158,15 +163,18 @@ public class GameWindow extends JFrame implements KeyListener
 			//p1.goingRight = false;
 		//else if(e.getKeyCode() == KeyEvent.VK_SPACE)
 			//p1.jumping = false;
+		while(pressed.contains(e.getKeyCode()))
+			pressed.remove((Integer)e.getKeyCode());
 			if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE)
 			{
 				Relativity.gameSpeed = 1.0;
 			}
-			else if(e.getKeyCode() != KeyEvent.VK_SPACE)
+			else if(e.getKeyCode() != KeyEvent.VK_SPACE && !pressed.contains(KeyEvent.VK_A) && !pressed.contains(KeyEvent.VK_D))
 			{
 				p1.goingLeft = false;
 				p1.goingRight = false;
 			}
+			
 		
 	}
 }

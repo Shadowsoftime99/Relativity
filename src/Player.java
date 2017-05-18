@@ -35,6 +35,7 @@ public class Player extends Entity
 		if (k%4==0)
 		g.fillRect((int)x-w/2  - GameWindow.camX, (int)(GameWindow.GAME_HEIGHT - y-h/2 + GameWindow.camY), w, h);
 		HPBar.drawBar(g, 70, 50);
+		SDBar.drawBar(g, 700, 50);
 	}	
 	
 	public void impact(Player p)

@@ -38,15 +38,14 @@ public class AbilityBar
 		
 	}
 	
-	public void paint(Graphics g, double x, double y)
+	public void drawBar(Graphics g, double x, double y) 
 	{
 		g.setColor(color);
 		g.fillRect((int)x,(int)y,(int)(mana/2.0),15);
 		
 		g.setColor(Color.white);
-		g.drawString(mana + "/" + maxMana, (int)x+10, (int)y+12);
-	}
-	
+		g.drawString(mana + "/" + maxMana, (int)x+10, (int)y+12);	
+	}	
 	
 	public void regen()
 	{
@@ -61,4 +60,5 @@ public class AbilityBar
 			
 		return false;
 	}
+
 }
