@@ -57,6 +57,7 @@ public class GameWindow extends JFrame implements KeyListener
 		updateEntities();
 		processAbility();
 		updateCamera();
+		useLastInput();
 		this.repaint();
 		ShadowsUtilities.delay(16);
 	}
@@ -125,51 +126,55 @@ public class GameWindow extends JFrame implements KeyListener
 	}
 
 	public ArrayList<Integer> pressed = new ArrayList<Integer>();
+	int curProfile = 0;
+	int[][] ctrlProfiles = {{KeyEvent.VK_D, KeyEvent.VK_A, KeyEvent.VK_SPACE, KeyEvent.VK_SHIFT},
+							{}};
 	@Override
 	public void keyPressed(KeyEvent e) {
 		if(!pressed.contains(e.getKeyCode()))
 		{
-			if(e.getKeyCode() == KeyEvent.VK_D)
-			{
-				p1.goingRight = true;
-				p1.goingLeft = false;
-			}
-			else if(e.getKeyCode() == KeyEvent.VK_A)
-			{
-				p1.goingLeft = true;
-				p1.goingRight = false;
-			}
-			if(e.getKeyCode() == KeyEvent.VK_SPACE)
-			{
-				p1.jumping = true;
-				p1.isGrounded = false;
-			}
-			if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE && !p1.SDBar.isOOM)
-			{
-				if(!p1.SDBar.blockout)
-					Relativity.gameSpeed = 0.25;
-				else 
-					Relativity.gameSpeed = 1.0;
-			}
 			pressed.add(e.getKeyCode());
+		}
+	}
+	
+	public void useLastInput()
+	{
+		if (pressed.size() == 0) return;
+		int last = pressed.get(pressed.size()-1);
+		if(last == ctrlProfiles[curProfile][0])
+		{
+			p1.goingRight = true;
+			p1.goingLeft = false;
+		}
+		else if(last == ctrlProfiles[curProfile][1])
+		{
+			p1.goingLeft = true;
+			p1.goingRight = false;
+		}
+		if(last == ctrlProfiles[curProfile][2])
+		{
+			p1.jumping = true;
+			p1.isGrounded = false;
+		}
+		if(last == ctrlProfiles[curProfile][3] && !p1.SDBar.isOOM)
+		{
+			if(!p1.SDBar.blockout)
+				Relativity.gameSpeed = 0.25;
+			else 
+				Relativity.gameSpeed = 1.0;
 		}
 	}
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		//if(e.getKeyCode() == KeyEvent.VK_D)
-			//p1.goingLeft = false;
-		//else if(e.getKeyCode() == KeyEvent.VK_A)
-			//p1.goingRight = false;
-		//else if(e.getKeyCode() == KeyEvent.VK_SPACE)
-			//p1.jumping = false;
+
 		while(pressed.contains(e.getKeyCode()))
 			pressed.remove((Integer)e.getKeyCode());
-			if(e.getKeyCode() == KeyEvent.VK_BACK_SPACE)
+			if(e.getKeyCode() == ctrlProfiles[curProfile][3])
 			{
 				Relativity.gameSpeed = 1.0;
 			}
-			else if(e.getKeyCode() != KeyEvent.VK_SPACE && !pressed.contains(KeyEvent.VK_A) && !pressed.contains(KeyEvent.VK_D))
+			else if(e.getKeyCode() != ctrlProfiles[curProfile][2] && !pressed.contains(ctrlProfiles[curProfile][0]) && !pressed.contains(ctrlProfiles[curProfile][1]))
 			{
 				p1.goingLeft = false;
 				p1.goingRight = false;
