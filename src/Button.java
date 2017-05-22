@@ -12,7 +12,7 @@ public class Button extends Rectangle
 {
 	
 	private static final long serialVersionUID = 1L;
-	public enum ButtonType {levelSelect, nextLevel, characterSelect, test, test2}; //Needs rest of button types
+	public enum ButtonType {levelSelect, nextLevel, characterSelect, backToLevel, test, test2}; //Needs rest of button types
 	
 	private int x, y, width, height;
 	private String label;
@@ -51,6 +51,10 @@ public class Button extends Rectangle
 				System.out.println("Type: test2");
 				break;
 				
+			case backToLevel:
+				GameWindow.isMenu = false;
+				break;
+				
 			default:
 				System.out.println("Unknown button type");
 				break;
@@ -68,4 +72,3 @@ public class Button extends Rectangle
 	}
 }
 	
-

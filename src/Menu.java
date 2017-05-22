@@ -11,7 +11,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
-public class Menu extends JFrame implements MouseListener
+public class Menu
 {
 	private static final long serialVersionUID = 1L;
 	
@@ -21,17 +21,14 @@ public class Menu extends JFrame implements MouseListener
 	
 	public Menu(String title, Button[] buttons)
 	{
-		super(title);
 		this.buttons = buttons;
 		name = title;
-		setSize(1000, 1000);
-		addMouseListener(this);
 	}
 	
 	public void drawMenu(Graphics g)
 	{
-		g.clearRect(0,  0,  2000, 2000);
-		setBackground(Color.lightGray);
+		//g.clearRect(0,  0,  2000, 2000);
+		//setBackground(Color.lightGray);
 		g.setFont(new Font("Comic Sans MS", 1, 20));
 		g.drawString(name, 475, 100);
 		g.setFont(new Font("Comic Sans MS", 0, 16));
@@ -40,29 +37,5 @@ public class Menu extends JFrame implements MouseListener
 			b.drawButton(g);
 		}
 	}
-	public void paint(Graphics g)
-	{
-		drawMenu(g);
-	}
-	
-	public void mouseClicked(MouseEvent e)
-	{
-		//System.out.println("x: " + e.getX());
-		//System.out.println("y: " + e.getY());
-		for(Button b : buttons)
-		{
-			if(b.contains(e.getX(), e.getY()))
-			{
-				b.doThing();
-			}
-		}
-	}
-	public void mousePressed(MouseEvent e) {}
-	
-	public void mouseReleased(MouseEvent e) {}
-	
-	public void mouseEntered(MouseEvent e) {}
-	
-	public void mouseExited(MouseEvent e) {}
 	
 }
