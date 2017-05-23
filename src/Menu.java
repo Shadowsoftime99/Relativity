@@ -15,9 +15,11 @@ public class Menu
 {
 	private static final long serialVersionUID = 1L;
 	
+	public static Menu[] menus = new Menu[11];
 	Button[] buttons;
 	String name;
 	int x, y;
+	private static boolean hasRun = false;
 	
 	public Menu(String title, Button[] buttons)
 	{
@@ -27,7 +29,7 @@ public class Menu
 	
 	public void drawMenu(Graphics g)
 	{
-		//g.clearRect(0,  0,  2000, 2000);
+		g.clearRect(0,  0,  2000, 2000);
 		//setBackground(Color.lightGray);
 		g.setFont(new Font("Comic Sans MS", 1, 20));
 		g.drawString(name, 475, 100);
@@ -38,4 +40,16 @@ public class Menu
 		}
 	}
 	
+	public static void initialize()
+	{
+		if(hasRun) return;
+		
+		hasRun = true;
+		Button[] buttons1 = {new Button(100, 100, 100, 100, "test", Button.ButtonType.test, Color.red, Color.black),
+		new Button(444, 666, 100, 100, "fuk u gerg", Button.ButtonType.backToLevel, Color.blue, Color.cyan)
+		};
+		Menu m1 = new Menu("Test", buttons1);
+		
+		menus[1] = m1;
+	}
 }
