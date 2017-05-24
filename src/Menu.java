@@ -3,18 +3,13 @@
  * @author Matt Davison
  *
  */
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import javax.swing.JFrame;
 
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 
 public class Menu
-{
-	private static final long serialVersionUID = 1L;
-	
+{	
 	public static Menu[] menus = new Menu[11];
 	Button[] buttons;
 	String name;

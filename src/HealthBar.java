@@ -6,7 +6,7 @@ public class HealthBar
 	int maxHP, currentHP, shadowHP;
 	Color color, shadowColor;
 	int q = 0;
-	int mercyInv = 50;
+	int mercyInv = 75;
 	int flash = 0;
 	boolean isMercy = false;
 	//Clip dmgSound = ShadowsUtilities.importSoundClip("sound/oof.wav");
