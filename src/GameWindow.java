@@ -51,7 +51,6 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 			return;
 		}
 		
-	
 		else
 		{
 		p1.draw(g);
@@ -60,19 +59,27 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 		}
 	}
 	
-	
+	private int l = 1;
 	/**
 	 * Starts the given level
 	 * @param lvl
 	 */
 	public void startLvl(int lvl)
 	{
+		l = lvl;
 		currentLvl = lvls[lvl];
 		camX = currentLvl.startingX;
 		camY = currentLvl.startingY;
 		//currentLvl.song.start();
 		p1.setPos(currentLvl.spawnX, currentLvl.spawnY);
 		//other crap
+	}
+	
+	public void advanceLvl()
+	{
+		startLvl(++l);
+		PhysicsEngine.stop(p1);
+		showMenu(Menu.menus[1]);
 	}
 	
 	/**
@@ -93,6 +100,7 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 		else
 		{
 			this.repaint();
+			ShadowsUtilities.delay(16);
 		}
 	}
 	

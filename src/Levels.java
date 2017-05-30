@@ -23,7 +23,8 @@ public class Levels
 		Block[] layout1 = {
 				new Enemy(50, 50, 700, 600, 400, 600, 4.0, true),
 				new Ground(1000, 600, 0, 375),
-				new Ground(50, 50, 200, 425)
+				new Ground(50, 50, 200, 425),
+				new LevelEnd(900, 500)
 		};
 		
 		l1.layout = layout1;
@@ -36,6 +37,26 @@ public class Levels
 		//l1.song = ShadowsUtilities.importSoundClip("./music/stage1.wav");
 		
 		levels[1] = l1;
+		
+		
+		Levels l2 = new Levels();
+		Block[] layout2 = {
+				//new Enemy(50, 50, 700, 600, 400, 600, 4.0, true),
+				new Ground(1000, 600, 0, 375),
+				new Ground(50, 50, 200, 425),
+				new LevelEnd(1100, 500)
+		};
+		
+		l2.layout = layout2;
+		l2.startingX = 0;
+		l2.startingY = 100;
+		l2.spawnX = 50;
+		l2.spawnY = 400;
+		int[][] ranges2 = {{0,6000},{0, 3000}};
+		l2.ranges = ranges2;
+		//l1.song = ShadowsUtilities.importSoundClip("./music/stage1.wav");
+		
+		levels[2] = l2;
 		
 	}
 }

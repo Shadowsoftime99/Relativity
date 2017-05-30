@@ -21,6 +21,13 @@ public class PhysicsEngine
 		else if(!p.jumping) p.Vy -= p.g * 0.3;
 	}
 	
+	public static void stop(Player p)
+	{
+		p.Vx = 0;
+		p.Vy = 0;
+		p.jumping = false;
+	}
+	
 	public static void updatePlayerVx(Player p, boolean isAccel, boolean isRightward)
 	{	
 		double origVx = p.Vx;
@@ -45,6 +52,12 @@ public class PhysicsEngine
 	public static void playerJump(Player p)
 	{
 		//if(p.y <= 400 && timeInTicks > 1) p.isGrounded = true;
+		
+		if(jumpTimeInTicks == 0 && !p.isGrounded)
+		{
+			p.jumping = false;
+			return;
+		}
 		if(p.isGrounded && p.jumping)
 		{
 			jumpTimeInTicks = 0;
