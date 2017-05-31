@@ -49,12 +49,11 @@ public class Ground extends Block
 				else if(p.y < y)
 					p.y = y - h/2.0-p.h/2.0;
 				
-					
-					p.jumping = false;
-					PhysicsEngine.jumpTimeInTicks = 0;
+				if(ECB[0].contains(p.x)) p.isGrounded = true;
+				p.jumping = false;
+				PhysicsEngine.jumpTimeInTicks = 0;
 				
 			}
-			p.isGrounded = true;
 		}		
 	}
 }

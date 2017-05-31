@@ -42,4 +42,11 @@ public class Player extends Entity
 	{
 		//nothing
 	}
+	
+	public static void die()
+	{
+		//show died screen.menu
+		//lives--
+		Relativity.gw.restartLvl();
+	}
 }

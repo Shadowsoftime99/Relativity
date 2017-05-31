@@ -66,6 +66,8 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 	 */
 	public void startLvl(int lvl)
 	{
+		PhysicsEngine.stop(p1);
+		p1.HPBar.fullHeal();
 		l = lvl;
 		currentLvl = lvls[lvl];
 		camX = currentLvl.startingX;
@@ -75,10 +77,14 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 		//other crap
 	}
 	
+	public void restartLvl()
+	{
+		startLvl(l);
+	}
+	
 	public void advanceLvl()
 	{
 		startLvl(++l);
-		PhysicsEngine.stop(p1);
 		showMenu(Menu.menus[1]);
 	}
 	
@@ -198,7 +204,7 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 			p1.goingLeft = true;
 			p1.goingRight = false;
 		}
-		if(last == ctrlProfiles[curProfile][2])
+		if(last == ctrlProfiles[curProfile][2] && p1.isGrounded)
 		{
 			p1.jumping = true;
 			p1.isGrounded = false;

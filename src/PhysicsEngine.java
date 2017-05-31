@@ -17,8 +17,8 @@ public class PhysicsEngine
 	
 	public static void freeFall(Player p)
 	{
-		if (p.isGrounded) p.Vy = 0;
-		else if(!p.jumping) p.Vy -= p.g * 0.3;
+		/*if (p.isGrounded) p.Vy = 0;
+		else*/ if(!p.jumping) p.Vy -= p.g * 0.3;
 	}
 	
 	public static void stop(Player p)
@@ -53,11 +53,6 @@ public class PhysicsEngine
 	{
 		//if(p.y <= 400 && timeInTicks > 1) p.isGrounded = true;
 		
-		if(jumpTimeInTicks == 0 && !p.isGrounded)
-		{
-			p.jumping = false;
-			return;
-		}
 		if(p.isGrounded && p.jumping)
 		{
 			jumpTimeInTicks = 0;
