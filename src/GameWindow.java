@@ -55,6 +55,7 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 		{
 		p1.draw(g);
 		for(Block b : currentLvl.layout)
+			if(b.isOnscreen())
 		b.draw(g);
 		}
 	}
@@ -147,8 +148,8 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 		
 		if(p1.HPBar.isMercy)
 		{
-			p1.SDBar.blockout = true;
-			Relativity.gameSpeed = 1.0;
+			/*p1.SDBar.blockout = true;
+			Relativity.gameSpeed = 1.0;*/
 			p1.HPBar.flash++;
 			if(p1.HPBar.flash-1 > p1.HPBar.mercyInv)
 			{
@@ -161,8 +162,8 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 	
 	public void updateCamera()
 	{
-		if(p1.x - camX > 800) camX+= 7;
-		if(p1.x - camX < 200) camX-= 7;
+		if(p1.x - camX > 600) camX+= 7;
+		if(p1.x - camX < 0) camX-= 7;
 		if(camX < currentLvl.ranges[0][0]) camX = currentLvl.ranges[0][0];
 		if(camX + GAME_WIDTH > currentLvl.ranges[0][1]) camX = currentLvl.ranges[0][1] - GAME_WIDTH;
 	}

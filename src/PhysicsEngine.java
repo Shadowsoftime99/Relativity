@@ -98,10 +98,13 @@ public class PhysicsEngine
 		p.isGrounded = false; 
 		for(Block b : layout)
 		{
-			if(b.checkCollision(p))
-			{
-					b.impact(p);
-			}
+			if(b.isOnscreen())
+            {
+                if(b.checkCollision(p))
+                {
+                    b.impact(p);
+                }
+            }
 		}
 	}
 }

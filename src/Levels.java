@@ -21,10 +21,18 @@ public class Levels
 		hasRun = true;
 		Levels l1 = new Levels();
 		Block[] layout1 = {
-				new Enemy(50, 50, 700, 600, 400, 600, 4.0, true),
+				new Enemy(50, 50, 700, 500, 400, 450, 24.0, true),
+				new Enemy(50, 50, 1400, 425, 1400, 1600, 24.0, false),
 				new Ground(1000, 600, 0, 375),
 				new Ground(50, 50, 200, 425),
-				new LevelEnd(900, 500)
+				new Ground(500, 50, 300, 500), //power-up on the edge of this platform
+				new Ground(400, 50, 900, 600),
+				new Ground(50, 100, 1000, 700),
+				new Enemy(50, 50, 1050, 650, 1250, 1050, 16, false),
+				new Ground(1800, 600, 1200, 375),//spikes in pit
+				new Ground(50, 100, 1350, 475),
+				new Ground(50, 100, 1600, 475),
+				new LevelEnd(2990, 500)
 		};
 		
 		l1.layout = layout1;

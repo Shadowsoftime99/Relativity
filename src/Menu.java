@@ -40,8 +40,7 @@ public class Menu
 		if(hasRun) return;
 		
 		hasRun = true;
-		Button[] buttons1 = {new Button(100, 100, 100, 100, "test", Button.ButtonType.test, Color.red, Color.black),
-		new Button(444, 666, 100, 100, "fuk u gerg", Button.ButtonType.backToLevel, Color.blue, Color.cyan)
+		Button[] buttons1 = {new Button(100, 100, 100, 100, "Play", Button.ButtonType.backToLevel, Color.blue, Color.cyan)
 		};
 		Menu m1 = new Menu("Test", buttons1);
 		
