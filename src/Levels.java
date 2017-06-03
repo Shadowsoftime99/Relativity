@@ -19,7 +19,7 @@ public class Levels
 		if(hasRun) return; //singleton implementation; prevents code from running more than once
 		
 		hasRun = true;
-		/*Levels l1 = new Levels();
+		Levels l1 = new Levels();
 		Block[] layout1 = {
 				new Enemy(50, 50, 700, 500, 400, 500, 8.0, true),
 				new Enemy(50, 50, 1400, 425, 1400, 1600, 24.0, false),
@@ -48,7 +48,7 @@ public class Levels
 		l1.ranges = ranges1;
 		//l1.song = ShadowsUtilities.importSoundClip("./music/stage1.wav");
 		
-		levels[1] = l1;*/
+		levels[1] = l1;
 		
 		
 		Levels l2 = new Levels();
@@ -77,7 +77,7 @@ public class Levels
 		l2.ranges = ranges2;
 		//l1.song = ShadowsUtilities.importSoundClip("./music/stage1.wav");
 		
-		levels[1] = l2;
+		levels[2] = l2;
 		
 	}
 }
