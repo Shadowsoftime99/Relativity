@@ -12,7 +12,6 @@ public class Ground extends Block
 		this.h = h;
 	}
 
-	@Override
 	public void draw(Graphics g) 
 	{
 		g.setColor(new Color(35, 35, 35));
@@ -30,29 +29,46 @@ public class Ground extends Block
 		
 		if(Range.doRangesCross(ECB[1], pYRange) && Math.abs(x - newXCtr) < Math.abs(x - p.x))
 		{
-			if(p.y < y + h/2 && p.y + p.h > y - h/2  ) //TODO: Fix this shit
+			if(p.y < y + h/2 && p.y + p.h/2 > y - h/2) 
 			{
-				p.Vx = 0;
-				if(p.x > x)
-					p.x = x + w/2.0+p.w/2.0;
-				else if(p.x < x)
-					p.x = x - w/2.0-p.w/2.0;
+				if(Range.doRangesCross(ECB[0], pXRange))
+				{
+					if(p.x > x + w/2)
+					{
+						p.x = x + w/2.0+p.w/2.0;
+						p.Vx = 0;
+					}
+					else if(p.x < x - w/2)
+					{
+						p.x = x - w/2.0-p.w/2.0;
+						p.Vx = 0;
+					}	
+				}
 			}
 		}
 		if(Range.doRangesCross(ECB[0], pXRange) && Math.abs(y - newYCtr) < Math.abs(y - p.y))
 		{
-			if(p.x - p.w/2 < x + w/2 && x + p.w/2 > x - w/2)
+			if(p.x - p.w/2 < x + w/2 && p.x + p.w/2 > x - w/2)
 			{
-				p.Vy = 0;
-				if(p.y > y)
-					p.y = y + h/2.0+p.h/2.0;
-				else if(p.y < y)
-					p.y = y - h/2.0-p.h/2.0;
-				
-					p.isGrounded = true;
-					p.jumping = false;
-					PhysicsEngine.jumpTimeInTicks = 0;
-				
+				if(Range.doRangesCross(ECB[1], pYRange))
+				{
+					if(p.y - p.h/2 > y)
+					{
+						p.y = y + h/2.0+p.h/2.0;
+						p.Vy = 0;
+						p.isGrounded = true;
+						p.jumping = false;
+						PhysicsEngine.jumpTimeInTicks = 0;
+					}
+					else if(p.y + p.h/2 < y)
+					{
+						p.y = y - h/2.0-p.h/2.0;
+						p.Vy = 0;
+						p.isGrounded = true;
+						p.jumping = false;
+						PhysicsEngine.jumpTimeInTicks = 0;
+					}
+				}	
 			}
 		}		
 	}

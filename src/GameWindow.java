@@ -15,7 +15,7 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 	protected static Levels currentLvl;
 	protected static Menu currentMenu;
 	public static boolean isMenu = false;
-	VisualPanel vp = new VisualPanel(true);
+	VisualPanel vp = new VisualPanel();
 	
 	public static int camX, camY;
 	public static final int GAME_WIDTH = 1000, GAME_HEIGHT = 750;

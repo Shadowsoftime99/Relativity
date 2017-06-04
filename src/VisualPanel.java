@@ -10,9 +10,9 @@ public class VisualPanel extends JPanel{
 	private Menu currentMenu;
 	private Player p1;
 	private Levels currentLvl;
-	public VisualPanel(boolean isDB) 
+	public VisualPanel() 
 	{
-		super(isDB);
+		super(true);
 	}
 	
 	public void passIn(boolean isMenu, Menu menu, Player p1, Levels lvl)
@@ -34,13 +34,12 @@ public class VisualPanel extends JPanel{
 			currentMenu.drawMenu(g);
 			return;
 		}
-		
 		else
 		{
-			p1.draw(g);
 			for(Block b : currentLvl.layout)
 				if(b.isOnscreen())
 					b.draw(g);
+			p1.draw(g);
 		}
 	}
 
