@@ -15,6 +15,7 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 	protected static Levels currentLvl;
 	protected static Menu currentMenu;
 	public static boolean isMenu = false;
+	VisualPanel vp = new VisualPanel(true);
 	
 	public static int camX, camY;
 	public static final int GAME_WIDTH = 1000, GAME_HEIGHT = 750;
@@ -23,9 +24,10 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 	{
 		super("Games!");
 		setSize(GAME_WIDTH,GAME_HEIGHT);
-		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		addKeyListener(this);
 		addMouseListener(this);
+		add(vp);
 		this.p1 = p1;
 		camX = 0; camY = 0;
 	}
@@ -43,21 +45,9 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 	
 	public void paint(Graphics g)
 	{
-		g.clearRect(0, 0, 1000, 1000);
 		setBackground(new Color(150,150,150));
-		if(isMenu)
-		{
-			currentMenu.drawMenu(g);
-			return;
-		}
-		
-		else
-		{
-		p1.draw(g);
-		for(Block b : currentLvl.layout)
-			if(b.isOnscreen())
-		b.draw(g);
-		}
+		vp.passIn(isMenu, currentMenu, p1, currentLvl);
+		paintComponents(g);
 	}
 	
 	private int l = 1;
@@ -162,8 +152,8 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 	
 	public void updateCamera()
 	{
-		if(p1.x - camX > 600) camX+= 7;
-		if(p1.x - camX < 0) camX-= 7;
+		if(p1.x - camX > 650) camX+= 7;
+		if(p1.x - camX < 150) camX-= 7;
 		if(camX < currentLvl.ranges[0][0]) camX = currentLvl.ranges[0][0];
 		if(camX + GAME_WIDTH > currentLvl.ranges[0][1]) camX = currentLvl.ranges[0][1] - GAME_WIDTH;
 	}
@@ -209,6 +199,8 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 		{
 			p1.jumping = true;
 			p1.isGrounded = false;
+			while(pressed.contains(last))
+				pressed.remove((Integer)last);
 		}
 		if(last == ctrlProfiles[curProfile][3] && !p1.SDBar.isOOM)
 		{

@@ -22,10 +22,13 @@ public class Menu
 		name = title;
 	}
 	
+	private Color bg = new Color(150,150,150);
 	public void drawMenu(Graphics g)
 	{
-		g.clearRect(0,  0,  2000, 2000);
-		//setBackground(Color.lightGray);
+		g.clearRect(0,  0,  1000, 1000);
+		g.setColor(bg);
+		g.fillRect(0, 0, 1000, 1000);
+		g.setColor(Color.black);
 		g.setFont(new Font("Comic Sans MS", 1, 20));
 		g.drawString(name, 475, 100);
 		g.setFont(new Font("Comic Sans MS", 0, 16));

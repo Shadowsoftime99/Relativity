@@ -64,7 +64,7 @@ public class PhysicsEngine
 		
 		double t = jumpTimeInTicks*p.g;
 		
-		double velo = -.10*t+2.8+p.g*2.5;
+		double velo = -.10*t+2.8+p.g*2.5; //7.5+2.8 = 10.3
 		
 		jumpTimeInTicks++;
 			

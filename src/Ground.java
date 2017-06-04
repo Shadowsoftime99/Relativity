@@ -30,7 +30,7 @@ public class Ground extends Block
 		
 		if(Range.doRangesCross(ECB[1], pYRange) && Math.abs(x - newXCtr) < Math.abs(x - p.x))
 		{
-			if(p.y < y + h/2 && p.y > y - h/2)
+			if(p.y < y + h/2 && p.y + p.h > y - h/2  ) //TODO: Fix this shit
 			{
 				p.Vx = 0;
 				if(p.x > x)
@@ -41,7 +41,7 @@ public class Ground extends Block
 		}
 		if(Range.doRangesCross(ECB[0], pXRange) && Math.abs(y - newYCtr) < Math.abs(y - p.y))
 		{
-			if(p.x - p.w/2 < x + w/2 && x + p.w/2 > x - h/2)
+			if(p.x - p.w/2 < x + w/2 && x + p.w/2 > x - w/2)
 			{
 				p.Vy = 0;
 				if(p.y > y)
@@ -49,9 +49,9 @@ public class Ground extends Block
 				else if(p.y < y)
 					p.y = y - h/2.0-p.h/2.0;
 				
-				if(ECB[0].contains(p.x)) p.isGrounded = true;
-				p.jumping = false;
-				PhysicsEngine.jumpTimeInTicks = 0;
+					p.isGrounded = true;
+					p.jumping = false;
+					PhysicsEngine.jumpTimeInTicks = 0;
 				
 			}
 		}		
