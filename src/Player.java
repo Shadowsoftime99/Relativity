@@ -1,8 +1,10 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Font;
 
 public class Player extends Entity
 {
+	public static byte lives; // :D
 	double g;
 	double maxSpeed;
 	double accel;
@@ -23,9 +25,11 @@ public class Player extends Entity
 		this.name = name;
 		HPBar = new HealthBar(HP, HP, Color.red, Color.GRAY);
 		SDBar = new AbilityBar(SP, Color.blue, 3, 1);
+		lives = 3;
 	}
 	
 	private int k = 0;
+	private Font lifeFont = new Font("TimesRoman",Font.PLAIN, 30);
 	public void draw(Graphics g)
 	{
 		if(HPBar.isMercy) k++;
@@ -36,6 +40,10 @@ public class Player extends Entity
 		g.fillRect((int)x-w/2  - GameWindow.camX, (int)(GameWindow.GAME_HEIGHT - y-h/2 + GameWindow.camY), w, h);
 		HPBar.drawBar(g, 70, 50);
 		SDBar.drawBar(g, 700, 50);
+		
+		g.setColor(Color.RED);
+		g.setFont(lifeFont);
+		g.drawString("x" + lives, 37, 70);
 	}	
 	
 	public void impact(Player p)
@@ -46,7 +54,12 @@ public class Player extends Entity
 	public static void die()
 	{
 		//show died screen.menu
-		//lives--
+		Player.lives--;
 		Relativity.gw.restartLvl();
+	}
+	
+	public void lifeUp()
+	{
+		lives++;
 	}
 }
