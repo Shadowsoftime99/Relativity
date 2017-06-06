@@ -21,8 +21,8 @@ public class Button extends Rectangle
 	
 	public Button(int x, int y, int w, int h, String l, ButtonType t, Color c, Color c2)
 	{
-		this.x = x;
-		this.y = y;
+		this.x = x+w/2;
+		this.y = y-h/2;
 		width = w;
 		height = h;
 		label = l;
@@ -36,21 +36,13 @@ public class Button extends Rectangle
 		g.setColor(color);
 		g.fillRect(x, y, width, height);
 		g.setColor(textColor);
-		g.drawString(label, x + (width/5), y + (height/2));
+		g.drawString(label, x + (width/5) + (label.length()*10), y + (height/2));
 	}
 	
 	public void doThing() //Still needs actual functions, waiting on button types
 	{
 		switch(type)
 		{
-			case test:
-				System.out.println("Type: test");
-				break;
-				
-			case test2:
-				System.out.println("Type: test2");
-				break;
-				
 			case backToLevel:
 				GameWindow.isMenu = false;
 				break;
