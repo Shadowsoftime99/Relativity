@@ -29,6 +29,8 @@ public class Levels
 				new Ground(400, 50, 900, 600),
 				new Ground(50, 100, 1000, 700),
 				new Enemy(50, 50, 1050, 650, 1250, 1050, 16, false),
+				new Spike(50, 100, 1000, 175),
+				new Spike(50, 100, 1100, 175),
 				new Ground(1300, 600, 1200, 375),//spikes in pit
 				new Ground(50, 100, 1350, 475),
 				new Ground(50, 100, 1600, 475),
@@ -36,7 +38,8 @@ public class Levels
 				new Enemy(50, 50, 1750, 450, 1750, 2050, 16, false),
 				new Ground(500, 50, 2200, 700),
 				new LevelEnd(2490, 500),
-				new Ground(500, 50, 2900, 400)//extra life goes here
+				new Ground(500, 50, 2900, 400),//extra life goes here
+				new Spike(1000, 50, 2500, 100)
 		};
 		
 		l1.layout = layout1;
@@ -110,22 +113,23 @@ public class Levels
 		l3.ranges = ranges3;
 		//l1.song = ShadowsUtilities.importSoundClip("./music/stage1.wav");
 		
-		levels[3] = l3;*/
+		levels[3] = l3;
 		
 		
 		Levels l4 = new Levels();
 		Block[] layout4 = {
-				new Ground(850, 600, 0, 375),//ice
-				new Ground(200, 50, 300, 550),//ice
+				new Ice(850, 600, 0, 375),
+				new Ice(200, 50, 300, 550),
 				new Enemy(50, 50, 550, 800, 800, 400, 16, true),
 				new Enemy(50, 50, 600, 400, 400, 800, 16, true),
-				new Ground(200, 50, 650, 650),//ice
+				new Ice(200, 50, 650, 650),
+				new Spike(3000, 50, 850, 100),
 				new Ground(500, 50, 1000, 650),//moving/(only 200 long)
-				new Ground(100, 50, 1700, 500),//ice
+				new Ice(100, 50, 1700, 500),
 				new Ground(500, 50, 2000, 300),//moving
-				new Ground(200, 600, 2700, 375),//ice/spikes in pit
-				new Ground(50, 50, 3100, 475),//ice
-				new LevelEnd(3125, 550)
+				new Ice(200, 600, 2700, 375),//spikes in pit
+				new Ice(50, 50, 3100, 475),
+				new LevelEnd(3120, 550)
 		};
 		
 		l4.layout = layout4;
@@ -137,6 +141,38 @@ public class Levels
 		l4.ranges = ranges4;
 		//l1.song = ShadowsUtilities.importSoundClip("./music/stage1.wav");
 		
-		levels[1] = l4;
+		levels[1] = l4;*/
+		
+		Levels l5 = new Levels();
+		Block[] layout5 = {
+				new Ground(500, 600, 0, 375),
+				new Spike(5000, 50, 500, 100),
+				new Ice(200, 50, 650, 500),
+				new Enemy(50, 50, 925, 350, 800, 350, 32, true),
+				new Ice(300, 50, 1025, 300),//power-up on edge
+				new Ground(200, 50, 1050, 600), 
+				new Enemy(50, 50, 1250, 375, 1100, 1600, 16, false),
+				new Ground(350, 50, 1350, 550),
+				new Ice(400, 50, 1400, 250),//power-up(?) on ledge
+				new Enemy(50, 50, 1800, 500, 800, 350, 32, true),
+				new Ground(400, 50, 1900, 700),
+				new Ice(200, 50, 1900, 400),//power-up
+				new Ground(200, 50, 2300, 375),
+				new Enemy(50, 50, 1900, 450, 2100, 2300, 24, false),
+				new Ground(500, 50, 2600, 500),
+				new Enemy(50, 50, 2800, 525, 535, 800, 32, true),
+				new LevelEnd(3090, 550)
+		};
+		
+		l5.layout = layout5;
+		l5.startingX = 0;
+		l5.startingY = 100;
+		l5.spawnX = 50;
+		l5.spawnY = 400;
+		int[][] ranges5 = {{0,6000},{0, 3000}};
+		l5.ranges = ranges5;
+		//l1.song = ShadowsUtilities.importSoundClip("./music/stage1.wav");
+		
+		levels[1] = l5;
 	}
 }
