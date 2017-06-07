@@ -118,7 +118,7 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 	{
 		for(Block b : currentLvl.layout)
 		{
-			if(b instanceof Entity && b.isOnscreen())
+			if(b instanceof Entity)
 			{
 				PhysicsEngine.updateEntity((Entity) b);
 			}
