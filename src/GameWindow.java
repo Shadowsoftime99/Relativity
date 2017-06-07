@@ -166,7 +166,7 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 
 	public ArrayList<Integer> pressed = new ArrayList<Integer>();
 	int curProfile = 0;
-	int[][] ctrlProfiles = {{KeyEvent.VK_D, KeyEvent.VK_A, KeyEvent.VK_SPACE, KeyEvent.VK_SHIFT},
+	int[][] ctrlProfiles = {{KeyEvent.VK_D, KeyEvent.VK_A, KeyEvent.VK_W, KeyEvent.VK_SPACE},
 							{}};
 	@Override
 	public void keyPressed(KeyEvent e) {
