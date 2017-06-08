@@ -60,5 +60,12 @@ public class AbilityBar
 			
 		return false;
 	}
+	
+	public void changeMana(int amt)
+	{
+		int newAmt = mana + amt;
+		if(newAmt > maxMana) mana = maxMana;
+		else mana = newAmt;
+	}
 
 }

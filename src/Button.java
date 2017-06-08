@@ -12,7 +12,7 @@ public class Button extends Rectangle
 {
 	
 	private static final long serialVersionUID = 1L;
-	public enum ButtonType {levelSelect, nextLevel, characterSelect, backToLevel, test, test2}; //Needs rest of button types
+	public enum ButtonType {levelSelect, backToLevel, backToTitle}; //Needs rest of button types
 	
 	private int x, y, width, height;
 	private String label;
@@ -47,11 +47,14 @@ public class Button extends Rectangle
 				GameWindow.isMenu = false;
 				break;
 				
+			case backToTitle:
+				Relativity.gw.showMenu(Menu.menus[1]);
+				
 			default:
 				System.out.println("Unknown button type");
 				break;
 		}
-		//System.out.println(label);
+		System.out.println(label);
 	}
 	
 	public boolean contains(int x, int y)
