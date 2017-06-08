@@ -62,7 +62,7 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 		p1.HPBar.fullHeal();
 		l = lvl;
 		currentLvl = lvls[lvl];
-		currentLvl.song.setMicrosecondPosition(0);
+		//currentLvl.song.setMicrosecondPosition(0);
 		camX = currentLvl.startingX;
 		camY = currentLvl.startingY;
 		Levels.timer = currentLvl.maxTime;
@@ -76,9 +76,9 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 	
 	public void advanceLvl()
 	{
-		currentLvl.song.stop();
+		//currentLvl.song.stop();
 		startLvl(++l);
-		showMenu(Menu.menus[1]);
+		showMenu(Menu.menus[2]);
 	}
 	
 	/**
@@ -88,7 +88,7 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 	{
 		if(!isMenu)
 		{
-			currentLvl.song.start();
+			//currentLvl.song.start();
 			updatePlayer();
 			updateEntities();
 			processAbility();
@@ -100,7 +100,7 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 		}
 		else
 		{
-			currentLvl.song.stop();
+			//currentLvl.song.stop();
 			this.repaint();
 			ShadowsUtilities.delay(16);
 		}
@@ -199,7 +199,7 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 				//pause.setMicrosecondPosition(0);
 				//pause.start();
 			}
-			showMenu(Menu.menus[1]);
+			showMenu(Menu.menus[3]);
 		}
 		if(!pressed.contains(e.getKeyCode()))
 		{
@@ -263,7 +263,7 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 		//System.out.println("y: " + e.getY());
 		for(Button b : currentMenu.buttons)
 		{
-			if(b.contains(e.getX(), e.getY()))
+			if(b.contains(e.getX(), e.getY()) && isMenu)
 			{
 				b.doThing();
 			}

@@ -8,10 +8,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.awt.image.Raster;
-
-import javax.swing.JFrame;
 
 public class Menu
 {	
@@ -67,9 +63,20 @@ public class Menu
 		Menu start = new Menu("Relativity", buttons1, 48, 36);
 		menus[1] = start;
 		
-		Button[] buttons2 = {new Button(GameWindow.GAME_WIDTH/5, GameWindow.GAME_HEIGHT/3, 200, 200, "Next\nLevel", Button.ButtonType.backToLevel, Color.blue, Color.cyan),
-		new Button(GameWindow.GAME_WIDTH/5, 2*(GameWindow.GAME_HEIGHT/3), 200, 200, "Back to\nTitle", Button.ButtonType.backToTitle, Color.red, Color.black)};
-		Menu nextLvl = new Menu("Level complete!", buttons2, 36, 24);
+		Button[] buttons2 = {new Button(GameWindow.GAME_WIDTH/4, GameWindow.GAME_HEIGHT/3, 200, 200, "Next Level", Button.ButtonType.backToLevel, Color.blue, Color.cyan),
+		new Button(GameWindow.GAME_WIDTH/4, 2*(GameWindow.GAME_HEIGHT/3), 200, 200, "Title", Button.ButtonType.backToTitle, Color.red, Color.black)};
+		Menu nextLvl = new Menu("Level complete!", buttons2, 16, 36);
 		menus[2] = nextLvl;
+		
+		Button[] buttons3 = {new Button((int)(GameWindow.GAME_WIDTH/2.5), GameWindow.GAME_HEIGHT/4, 100, 75, "Resume", Button.ButtonType.backToLevel, Color.red, Color.black),
+				new Button((int)(GameWindow.GAME_WIDTH/2.5), GameWindow.GAME_HEIGHT/2, 100, 75, "Restart", Button.ButtonType.restartLevel, Color.red, Color.black), 
+				new Button((int)(GameWindow.GAME_WIDTH/2.5), 3*GameWindow.GAME_HEIGHT/4, 100, 75, "Title", Button.ButtonType.backToTitle, Color.red, Color.black)};
+		Menu pause = new Menu("Paused", buttons3, 16, 36);
+		menus[3] = pause;
+		
+		Button[] buttons4 = {new Button((int)(GameWindow.GAME_WIDTH/2.5), 3*GameWindow.GAME_HEIGHT/4, 100, 75, "Title", Button.ButtonType.backToTitle, Color.red, Color.black)};
+		Menu end = new Menu("You win!", buttons4, 16, 36);
+		menus[4] = end;
+		
 	}
 }

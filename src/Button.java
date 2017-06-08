@@ -12,7 +12,7 @@ public class Button extends Rectangle
 {
 	
 	private static final long serialVersionUID = 1L;
-	public enum ButtonType {levelSelect, backToLevel, backToTitle}; //Needs rest of button types
+	public enum ButtonType {levelSelect, backToLevel, backToTitle, restartLevel}; //Needs rest of button types
 	
 	private int x, y, width, height;
 	private String label;
@@ -36,7 +36,7 @@ public class Button extends Rectangle
 		g.setColor(color);
 		g.fillRect(x, y, width, height);
 		g.setColor(textColor);
-		g.drawString(label, x + (width/5) + (label.length()*10), y + (height/2));
+		g.drawString(label, x + (width/5), y + (height/2));
 	}
 	
 	public void doThing() //Still needs actual functions, waiting on button types
@@ -49,6 +49,12 @@ public class Button extends Rectangle
 				
 			case backToTitle:
 				Relativity.gw.showMenu(Menu.menus[1]);
+				break;
+				
+			case restartLevel:
+				Relativity.gw.restartLvl();
+				GameWindow.isMenu = false;
+				break;
 				
 			default:
 				System.out.println("Unknown button type");
