@@ -116,7 +116,7 @@ public class ShadowsUtilities
 		} 
 		catch (IOException e) 
 		{
-			JOptionPane.showMessageDialog(null,"There was an error with a sound file: IO" + e.getMessage(), "ERROR", 0);
+			JOptionPane.showMessageDialog(null,"There was an error with a sound file. Please check your file configuration.", "ERROR", 0);
 			System.exit(202);
 		} 
 		catch (LineUnavailableException e) 

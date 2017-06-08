@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.sound.sampled.Clip;
 import javax.swing.JFrame;
 
 public class GameWindow extends JFrame implements KeyListener, MouseListener
@@ -61,7 +62,7 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 		p1.HPBar.fullHeal();
 		l = lvl;
 		currentLvl = lvls[lvl];
-		//currentLvl.song.setMicrosecondPosition(0);
+		currentLvl.song.setMicrosecondPosition(0);
 		camX = currentLvl.startingX;
 		camY = currentLvl.startingY;
 		Levels.timer = currentLvl.maxTime;
@@ -75,6 +76,7 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 	
 	public void advanceLvl()
 	{
+		currentLvl.song.stop();
 		startLvl(++l);
 		showMenu(Menu.menus[1]);
 	}
@@ -86,7 +88,7 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 	{
 		if(!isMenu)
 		{
-			//currentLvl.song.start();
+			currentLvl.song.start();
 			updatePlayer();
 			updateEntities();
 			processAbility();
@@ -98,7 +100,7 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 		}
 		else
 		{
-			//currentLvl.song.stop();
+			currentLvl.song.stop();
 			this.repaint();
 			ShadowsUtilities.delay(16);
 		}
@@ -185,11 +187,18 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 	int curProfile = 0;
 	int[][] ctrlProfiles = {{KeyEvent.VK_D, KeyEvent.VK_A, KeyEvent.VK_W, KeyEvent.VK_SPACE},
 							{}};
+	
+	//private Clip pause = ShadowsUtilities.importSoundClip("./music/pause.wav");
 	@Override
 	public void keyPressed(KeyEvent e) {
 		
 		if(e.getKeyCode() == KeyEvent.VK_ESCAPE)
 		{
+			if(!isMenu)
+			{
+				//pause.setMicrosecondPosition(0);
+				//pause.start();
+			}
 			showMenu(Menu.menus[1]);
 		}
 		if(!pressed.contains(e.getKeyCode()))
