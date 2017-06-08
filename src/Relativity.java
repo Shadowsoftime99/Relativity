@@ -1,5 +1,3 @@
-import java.awt.Color;
-
 public class Relativity 
 {
 	public static double gameSpeed = 1;
@@ -9,7 +7,6 @@ public class Relativity
 		Player p1 = new Player(50, 50, 5, 400, 3.0, 7, 1.0, 0.7, "Albert");
 		Levels.initialize();
 		Menu.initialize();
-		
 		
 		gw = new GameWindow(p1);
 		gw.setVisible(true);

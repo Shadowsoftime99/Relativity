@@ -45,6 +45,7 @@ public class Menu
 	{
 		g.clearRect(0,  0,  1000, 1000);
 		g.setColor(bg);
+		g.fillRect(0, 0, 1000, 1000);
 		if(img != null) g.drawImage(img, 0, 0, GameWindow.GAME_WIDTH, GameWindow.GAME_HEIGHT, obs);
 		g.setColor(Color.black);
 		g.setFont(new Font("Comic Sans MS", 1, t));

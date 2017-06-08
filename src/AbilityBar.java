@@ -54,9 +54,9 @@ public class AbilityBar
 		if(mana > maxMana) mana = maxMana;
 	}
 	
-	public boolean isManaFull()
+	public boolean isManaHalfFull()
 	{
-		if(mana == maxMana) return true;
+		if(mana >= maxMana/2.0) return true;
 			
 		return false;
 	}

@@ -61,11 +61,11 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 		p1.HPBar.fullHeal();
 		l = lvl;
 		currentLvl = lvls[lvl];
+		//currentLvl.song.setMicrosecondPosition(0);
 		camX = currentLvl.startingX;
 		camY = currentLvl.startingY;
-		//currentLvl.song.start();
+		Levels.timer = currentLvl.maxTime;
 		p1.setPos(currentLvl.spawnX, currentLvl.spawnY);
-		//other crap
 	}
 	
 	public void restartLvl()
@@ -86,16 +86,19 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 	{
 		if(!isMenu)
 		{
+			//currentLvl.song.start();
 			updatePlayer();
 			updateEntities();
 			processAbility();
 			updateCamera();
 			useLastInput();
+			Levels.runTimer();
 			this.repaint();
 			ShadowsUtilities.delay(16);
 		}
 		else
 		{
+			//currentLvl.song.stop();
 			this.repaint();
 			ShadowsUtilities.delay(16);
 		}
@@ -134,7 +137,7 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 			p1.SDBar.cast();
 		}
 		else p1.SDBar.regen();
-		if(p1.SDBar.blockout && p1.SDBar.isManaFull()) p1.SDBar.blockout = false;
+		if(p1.SDBar.blockout && p1.SDBar.isManaHalfFull()) p1.SDBar.blockout = false;
 		
 		if(p1.HPBar.isMercy)
 		{
@@ -156,6 +159,20 @@ public class GameWindow extends JFrame implements KeyListener, MouseListener
 		if(p1.x - camX < 150) camX-= 7;
 		if(camX < currentLvl.ranges[0][0]) camX = currentLvl.ranges[0][0];
 		if(camX + GAME_WIDTH > currentLvl.ranges[0][1]) camX = currentLvl.ranges[0][1] - GAME_WIDTH;
+	}
+	
+	public void animateDeath()
+	{
+		for(int i = 0; i <= 50; i++)
+		{
+			p1.w--;
+			p1.h--;
+			repaint();
+			ShadowsUtilities.delay(40);
+		}
+		p1.w = 50;
+		p1.h = 50;
+		
 	}
 	
 	@Override

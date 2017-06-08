@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.swing.JPanel;
@@ -23,6 +24,7 @@ public class VisualPanel extends JPanel{
 		currentLvl = lvl;
 	}
 
+	private Font font = new Font("ComicSans",Font.ITALIC, 25);
 	private Color bg = new Color(150,150,150);
 	public void paint(Graphics g)
 	{
@@ -40,6 +42,9 @@ public class VisualPanel extends JPanel{
 				if(b.isOnscreen())
 					b.draw(g);
 			p1.draw(g);
+			g.setColor(Color.MAGENTA);
+			g.setFont(font);
+			g.drawString(""+Levels.timer, 475, 60);
 		}
 	}
 

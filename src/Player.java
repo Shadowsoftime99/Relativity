@@ -1,5 +1,8 @@
 import java.awt.Color;
 import java.awt.Graphics;
+
+import javax.sound.sampled.Clip;
+
 import java.awt.Font;
 
 public class Player extends Entity
@@ -51,13 +54,18 @@ public class Player extends Entity
 		//nothing
 	}
 	
+	//private static Clip deathSound = ShadowsUtilities.importSoundClip("./music/death.wav");
 	public static void die()
 	{
+		//GameWindow.currentLvl.song.stop();
+		//deathSound.start();
+		Relativity.gw.animateDeath();
 		//show died screen.menu
 		Player.lives--;
 		Relativity.gw.restartLvl();
+		//deathSound.setMicrosecondPosition(0);
 	}
-	
+
 	public void lifeUp()
 	{
 		lives++;

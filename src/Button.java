@@ -51,7 +51,7 @@ public class Button extends Rectangle
 				System.out.println("Unknown button type");
 				break;
 		}
-		System.out.println(label);
+		//System.out.println(label);
 	}
 	
 	public boolean contains(int x, int y)

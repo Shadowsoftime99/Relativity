@@ -4,13 +4,29 @@ public class Levels
 {
 	public static Levels[] levels = new Levels[11];
 	private static boolean hasRun = false;
+	public static int timer = 0;
 	
 	public Block[] layout;
 	public Clip song;
 	public int startingX, startingY;
 	public int spawnX, spawnY;
 	public int[][] ranges;
+	public int maxTime;
 	
+	private static int frameC = 0;
+	public static void runTimer()
+	{
+		frameC++;
+		if(frameC >= 30)
+		{
+			timer--;
+			frameC = 0;
+		}
+		if(timer == 0)
+		{
+			Player.die();
+		}
+	}
 	/**
 	 * To be run at the beginning of the game; sets up this class' static <code>levels</code> array
 	 */
@@ -19,7 +35,7 @@ public class Levels
 		if(hasRun) return; //singleton implementation; prevents code from running more than once
 		
 		hasRun = true;
-		/*Levels l1 = new Levels();
+		Levels l1 = new Levels();
 		Block[] layout1 = {
 				new Ground(1000, 600, 0, 375),
 				new Ground(50, 50, 200, 425),
@@ -49,6 +65,7 @@ public class Levels
 		l1.spawnY = 400;
 		int[][] ranges1 = {{0,6000},{0, 3000}};
 		l1.ranges = ranges1;
+		l1.maxTime = 75;
 		//l1.song = ShadowsUtilities.importSoundClip("./music/stage1.wav");
 		
 		levels[1] = l1;
@@ -77,6 +94,7 @@ public class Levels
 		l2.spawnY = 400;
 		int[][] ranges2 = {{0,6000},{0, 3000}};
 		l2.ranges = ranges2;
+		l2.maxTime = 100;
 		//l1.song = ShadowsUtilities.importSoundClip("./music/stage1.wav");
 		
 		levels[2] = l2;
@@ -111,6 +129,7 @@ public class Levels
 		l3.spawnY = 400;
 		int[][] ranges3 = {{0,6000},{0, 3000}};
 		l3.ranges = ranges3;
+		l3.maxTime = 100;
 		//l1.song = ShadowsUtilities.importSoundClip("./music/stage1.wav");
 		
 		levels[3] = l3;
@@ -139,9 +158,10 @@ public class Levels
 		l4.spawnY = 400;
 		int[][] ranges4 = {{0,6000},{0, 3000}};
 		l4.ranges = ranges4;
+		l4.maxTime = 140;
 		//l1.song = ShadowsUtilities.importSoundClip("./music/stage1.wav");
 		
-		levels[1] = l4;*/
+		levels[4] = l4;
 		
 		Levels l5 = new Levels();
 		Block[] layout5 = {
@@ -171,8 +191,9 @@ public class Levels
 		l5.spawnY = 400;
 		int[][] ranges5 = {{0,6000},{0, 3000}};
 		l5.ranges = ranges5;
+		l5.maxTime = 150;
 		//l1.song = ShadowsUtilities.importSoundClip("./music/stage1.wav");
 		
-		levels[1] = l5;
+		levels[5] = l5;
 	}
 }
