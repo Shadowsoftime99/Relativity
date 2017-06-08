@@ -41,7 +41,8 @@ public class Levels
 				new Ground(50, 50, 200, 425),
 				new Enemy(50, 50, 700, 500, 400, 500, 8.0, true),
 				new Enemy(50, 50, 1400, 425, 1400, 1600, 24.0, false),
-				new Ground(500, 50, 300, 575), //power-up on the edge of this platform
+				new Ground(500, 50, 300, 575),
+				new ManaRefill(775, 600),
 				new Ground(400, 50, 900, 600),
 				new Ground(50, 100, 1000, 700),
 				new Enemy(50, 50, 1050, 650, 1250, 1050, 16, false),
@@ -65,7 +66,7 @@ public class Levels
 		l1.spawnY = 400;
 		int[][] ranges1 = {{0,6000},{0, 3000}};
 		l1.ranges = ranges1;
-		l1.maxTime = 75;
+		l1.maxTime = 100;
 		//l1.song = ShadowsUtilities.importSoundClip("./music/stage1.wav");
 		
 		levels[1] = l1;
@@ -158,10 +159,11 @@ public class Levels
 		l4.spawnY = 400;
 		int[][] ranges4 = {{0,6000},{0, 3000}};
 		l4.ranges = ranges4;
-		l4.maxTime = 140;
+		l4.maxTime = 100;
 		//l1.song = ShadowsUtilities.importSoundClip("./music/stage1.wav");
 		
 		levels[4] = l4;
+		
 		
 		Levels l5 = new Levels();
 		Block[] layout5 = {
@@ -191,9 +193,26 @@ public class Levels
 		l5.spawnY = 400;
 		int[][] ranges5 = {{0,6000},{0, 3000}};
 		l5.ranges = ranges5;
-		l5.maxTime = 150;
+		l5.maxTime = 100;
 		//l1.song = ShadowsUtilities.importSoundClip("./music/stage1.wav");
 		
 		levels[5] = l5;
+		
+		
+		Levels l6 = new Levels();
+		Block[] layout5 = {
+		};
+		
+		l6.layout = layout6;
+		l6.startingX = 0;
+		l6.startingY = 100;
+		l6.spawnX = 50;
+		l6.spawnY = 400;
+		int[][] ranges5 = {{0,6000},{0, 3000}};
+		l6.ranges = ranges6;
+		l6.maxTime = 100;
+		//l1.song = ShadowsUtilities.importSoundClip("./music/stage1.wav");
+		
+		levels[6] = l6;
 	}
 }

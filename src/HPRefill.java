@@ -4,11 +4,15 @@ public class HPRefill extends Pickup
 {
 	public HPRefill(int x, int y)
 	{
-		super(25, 25, new Color(255, 0, 0));
+		super(x, y, new Color(155, 0, 0));
 	}
 	
 	public void impact(Player p)
 	{
-		p.HPBar.changeHP(1);
+		if(!isPickedUp)
+		{
+			p.HPBar.changeHP(1);
+			isPickedUp = true;	
+		}
 	}
 }

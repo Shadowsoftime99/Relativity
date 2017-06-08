@@ -9,6 +9,10 @@ public class ManaRefill extends Pickup
 	
 	public void impact(Player p)
 	{
-		p.SDBar.changeMana(100);
+		if(!isPickedUp)
+		{
+			p.SDBar.changeMana(100);
+			isPickedUp = true;
+		}		
 	}
 }

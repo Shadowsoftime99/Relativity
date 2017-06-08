@@ -4,11 +4,15 @@ public class BonusTime extends Pickup
 {
 	public BonusTime(int x, int y)
 	{
-		super(x, y, new Color(255, 255, 255));
+		super(x, y, Color.magenta);
 	}
 	
 	public void impact(Player p)
 	{
-		//Levels.timer += 30;
+		if(!isPickedUp)
+		{
+			Levels.timer += 30;
+			isPickedUp = true;
+		}
 	}
 }
