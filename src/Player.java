@@ -64,8 +64,12 @@ public class Player extends Entity
 		Player.lives--;
 		Relativity.gw.restartLvl();
 		//deathSound.setMicrosecondPosition(0);
+		if(Player.lives==0)
+		{
+			Relativity.gw.restartGame();
+		}
 	}
-
+	
 	public void lifeUp()
 	{
 		lives++;
