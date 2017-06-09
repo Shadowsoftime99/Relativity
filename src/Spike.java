@@ -12,6 +12,7 @@ public class Spike extends Ground
 		this.y = y-h/2;
 		this.w = w;
 		this.h = h;
+		isTriangle = true;
 	}
 	
 	

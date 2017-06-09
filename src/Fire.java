@@ -6,6 +6,7 @@ public class Fire extends Ground
 	public Fire(int w, int h, int x, int y)
 	{
 		super(w, h, x, y);
+		isTriangle = true;
 	}
 	
 	public void draw(Graphics g)

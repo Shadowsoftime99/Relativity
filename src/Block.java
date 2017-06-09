@@ -6,6 +6,7 @@ public abstract class Block
 	double Vx = 0, Vy = 0;
 
 	int w, h;
+	boolean isTriangle;
 	
 	public Block(int w, int h)
 	{
@@ -65,7 +66,9 @@ public abstract class Block
 		double topP = p.y-p.h/2.0;
 		double botP = p.y+p.h/2.0;
 		
-		Range horiz = new Range(left, right);
+		Range horiz;
+		if(isTriangle) horiz = new Range(left, right+w);
+		else horiz = new Range(left, right);
 		Range vertical = new Range(top, bot);
 		Range horizP = new Range(leftP, rightP);
 		Range verticalP = new Range(topP, botP);

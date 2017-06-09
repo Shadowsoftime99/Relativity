@@ -78,5 +78,10 @@ public class Menu
 		Menu end = new Menu("You win!", buttons4, 16, 36);
 		menus[4] = end;
 		
+		Button[] buttons5 = {new Button(GameWindow.GAME_WIDTH/5, GameWindow.GAME_HEIGHT/2, 300, 300, "Title", Button.ButtonType.backToTitle, Color.blue, Color.cyan)
+		};
+		Menu gameOver = new Menu("Game Over!", buttons5, 48, 36);
+		menus[5] = gameOver;
+		
 	}
 }
