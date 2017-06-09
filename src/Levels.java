@@ -69,7 +69,7 @@ public class Levels
 		l1.maxTime = 100;
 		//l1.song = ShadowsUtilities.importSoundClip("./music/stage1.wav");
 		
-		levels[2] = l1;
+		levels[1] = l1;
 		
 		
 		Levels l2 = new Levels();
@@ -207,7 +207,7 @@ public class Levels
 		l5.maxTime = 100;
 		//l1.song = ShadowsUtilities.importSoundClip("./music/stage1.wav");
 		
-		levels[1] = l5;
+		levels[5] = l5;
 		
 		
 		Levels l6 = new Levels();

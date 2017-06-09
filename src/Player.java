@@ -66,7 +66,7 @@ public class Player extends Entity
 		//deathSound.setMicrosecondPosition(0);
 		if(Player.lives==0)
 		{
-			Relativity.gw.restartGame();
+			Relativity.gw.showMenu(Menu.menus[5]);
 		}
 	}
 	
